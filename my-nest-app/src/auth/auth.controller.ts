@@ -13,9 +13,7 @@ export class AuthController {
       // 사용자 인증
       await this.authService.validateUser(username, password);
 
-      // 로그인 성공 시 토큰 생성 및 반환
-      const user = { username, userId: 1 }; // 이 부분을 실제 사용자 정보로 대체
-      const token = await this.authService.login(user);
+      const token = await this.authService.makeToken(username);
 
       res.header('X-ACCESS-TOKEN', `Bearer ${token.access_token}`);
       return res.status(HttpStatus.OK).json({

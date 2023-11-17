@@ -8,11 +8,9 @@ export class SurveyController {
     private readonly surveyService: SurveyService,
   ) {}
 
-  @UseGuards()
+  @UseGuards(JwtAuthGuard)
   @Post()
   async createSurvey(@Body() body: { title: string }, @Req() request: Request) {
-    const accessToken = request.headers['X-ACCESS-TOKEN'];
-    console.log(accessToken)
     const { title } = body;
     try {
       await this.surveyService.createSurvey(title)

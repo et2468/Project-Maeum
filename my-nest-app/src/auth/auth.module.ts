@@ -12,7 +12,7 @@ import { JwtAuthGuard } from './auth.guard';
   imports: [
     TypeOrmModule.forFeature([Users]),
     JwtModule.register({
-      secret: 'your-secret-key', // 토큰 서명을 위한 시크릿 키
+      secret: 'maeum', // 토큰 서명을 위한 시크릿 키
       signOptions: { expiresIn: '1h' }, // 토큰 만료 시간
     }),
   ],
