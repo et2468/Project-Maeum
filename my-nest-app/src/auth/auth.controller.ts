@@ -12,21 +12,13 @@ export class AuthController {
     try {
       // 사용자 인증
       await this.authService.validateUser(username, password);
-
       const token = await this.authService.makeToken(username);
-
       res.header('X-ACCESS-TOKEN', `Bearer ${token.access_token}`);
       return res.status(HttpStatus.OK).json({
-        statusCode: HttpStatus.OK,
         message: '로그인 성공',
       });
-    } catch (error) {
-      // 사용자 인증 실패 시 예외 처리
-      if (error instanceof HttpException) {
-        throw error;
-      }
-      // 기타 예외 발생 시 500 Internal Server Error 반환
-      throw new HttpException('로그인 중 오류가 발생했습니다.', HttpStatus.INTERNAL_SERVER_ERROR);
+    } catch (e) {
+      throw new HttpException(e.message, e.getStatus());
     }
   }
 }

@@ -14,7 +14,6 @@ export class UserService {
 
     const existingUser = await this.userRepository.findOne({ where: { username } });
     if (existingUser) {
-      console.log('중복된 유저이름 예외 발생 전');
       throw new HttpException('중복된 유저이름',HttpStatus.CONFLICT);
     }
     
