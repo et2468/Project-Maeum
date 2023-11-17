@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Post } from '@nestjs/common';
 import { UserService } from './user.service';
 import * as bcrypt from 'bcrypt';
 
@@ -12,12 +12,29 @@ export class UserController {
   async signup(@Body() body: { username: string; password: string }) {
     const { username, password } = body;
     const hashedPassword = await bcrypt.hash(password, 10);
-    this.userService.signup(username, hashedPassword);
-    return '회원가입이 성공적으로 완료되었습니다.';
-  }
+    try {
+      await this.userService.signup(username, hashedPassword);
+    }
+    catch (e) {
+      if (e instanceof HttpException && e.getStatus() === HttpStatus.CONFLICT) {
+        return {
+          statusCode: HttpStatus.CONFLICT,
+          message: '이미 존재하는 사용자 이름입니다.',
+        };
+      } else {
+        console.error('회원가입 중 에러 발생:', e.message);
+        return {
+          statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+          message: '회원가입 중 에러가 발생했습니다.',
+        };
+      }
+    }    
 
-  @Get()
-  findAllUsers() {
-    return this.userService.findAll();
+    return {
+    statusCode: HttpStatus.CREATED,
+    message: '회원가입이 성공적으로 완료되었습니다.',
+    };
+
   }
+  
 }

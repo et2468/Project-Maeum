@@ -8,8 +8,9 @@ import { Survey } from './entities/survey.entity';
 import { Question } from './entities/question.entity';
 import { Answer } from './entities/answer.entity';
 import { UserAnswer } from './entities/user_answer.entity';
-import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
+import { AuthModule } from './auth/auth.module';
+import { SurveyModule } from './survey/survey.module';
 
 
 @Module({
@@ -24,13 +25,10 @@ import { PassportModule } from '@nestjs/passport';
       synchronize: true,
       entities: [Users, Survey, Question, Answer, UserAnswer],
     }),
-
-    JwtModule.register({
-      secret: 'maeum',
-      signOptions: { expiresIn: '1h' },
-    }),
     PassportModule,
     UserModule,
+    AuthModule,
+    SurveyModule,
   ],
   controllers: [AppController],
   providers: [AppService],
