@@ -4,7 +4,6 @@ import { HttpException } from '@nestjs/common';
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
-    console.log('HttpExceptionFilter 처리 중:', exception);
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
 

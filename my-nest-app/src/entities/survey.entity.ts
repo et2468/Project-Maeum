@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, ManyToMany, OneToMany, JoinColumn } from 'typeorm';
 import { Users } from './user.entity';
 import { Question } from './question.entity';
+import { UserSurvey } from './user-survey.entity';
 
 @Entity()
 export class Survey {
@@ -8,11 +9,17 @@ export class Survey {
 	@PrimaryGeneratedColumn({ name: 'survey_id' })
 	id: number;
 
-  @ManyToOne(() => Users, (user) => user.surveys)
+  @ManyToOne(() => Users, (user) => user.createdSurveys)
 	@JoinColumn({ name: 'user_id' })
-  user: Users;
+  creater: Users;
 
-  @OneToMany(() => Question, (question) => question.survey)
+  @ManyToMany(() => Users, user => user.performedSurveys)
+  performers: Users[];
+
+  @OneToMany(() => UserSurvey, userSurvey => userSurvey.survey)
+  userSurveys: UserSurvey[];
+
+  @OneToMany(() => Question, (question) => question.survey, { cascade: true, onDelete: 'CASCADE' })
   questions: Question[];
 
 	@Column()

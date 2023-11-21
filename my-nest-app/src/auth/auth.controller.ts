@@ -10,7 +10,6 @@ export class AuthController {
     const { username, password } = body;
 
     try {
-      // 사용자 인증
       await this.authService.validateUser(username, password);
       const token = await this.authService.makeToken(username);
       res.header('X-ACCESS-TOKEN', `Bearer ${token.access_token}`);
