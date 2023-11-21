@@ -48,6 +48,8 @@
 - maeum 유저가 maeum db에 대한 모든 권한을 부여합니다.
   - `GRANT ALL PRIVILEGES ON DATABASE maeum TO maeum;`
 
+- app.module.ts에 작성되어있는 postgres 연결 설정정보를 참고하여 주시면 감사하겠습니다.
+
 
 
 백엔드
