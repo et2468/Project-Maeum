@@ -59,7 +59,6 @@ export class QuestionController {
         message: "문항이 삭제되었습니다."
       })
     } catch (e) {
-      console.log(e.message)
       throw new HttpException(e.message, e.getStatus());
     }
   }

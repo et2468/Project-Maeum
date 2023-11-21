@@ -31,7 +31,6 @@ export class SurveyService {
 
   async getUserSurveys(username: string) {
     const user = await this.userRepository.findOne({ where: { username }, relations: ['createdSurveys'] });
-    console.log(user)
     if (!user) {
       throw new HttpException('사용자가 없습니다.', HttpStatus.NOT_FOUND);
     }

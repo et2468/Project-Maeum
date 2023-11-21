@@ -19,7 +19,6 @@ export class UserSurveyController {
         message: "설문지가 작성되었습니다."
       })
     } catch (e) {
-      console.log(e.message)
       throw new HttpException(e.message, e.getStatus());
     }
   }
@@ -33,7 +32,6 @@ export class UserSurveyController {
         allWritrdSurvey
       })
     } catch (e) {
-      console.log(e)
       throw new HttpException(e.message, e.getStatus());
     }
   }
@@ -47,7 +45,6 @@ export class UserSurveyController {
         writedSurvey
       })
     } catch (e) {
-      console.log(e)
       throw new HttpException(e.message, e.getStatus());
     }
   }
@@ -62,7 +59,6 @@ export class UserSurveyController {
         message: "설문지가 수정되었습니다."
       })
     } catch (e) {
-      console.log(e.message)
       throw new HttpException(e.message, e.getStatus());
     }
   }
@@ -76,7 +72,6 @@ export class UserSurveyController {
         message: "설문지가 삭제되었습니다."
       })
     } catch (e) {
-      console.log(e.message)
       throw new HttpException(e.message, e.getStatus());
     }
   }

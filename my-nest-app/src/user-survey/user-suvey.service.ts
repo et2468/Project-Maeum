@@ -92,10 +92,8 @@ export class UserSurveyService {
       if (!existingQuestion) {
         throw new HttpException('설문지에 해당 문항이 없습니다.', HttpStatus.NOT_FOUND);
       }
-      console.log('#', existingQuestion)
       for (const rewritedUserAnswer of reWritedUserQuestion.userAnswers) {
 
-        console.log(existingQuestion.id, rewritedUserAnswer.answer.id)
         
         const answerToConvet = await this.answerRepository
           .createQueryBuilder('answer')
@@ -105,7 +103,6 @@ export class UserSurveyService {
         if (!answerToConvet) {
           throw new HttpException('문항에 해당 답변이 없습니다.', HttpStatus.NOT_FOUND);
         }
-        console.log('##', answerToConvet)
         
         await this.userAnswerRepository
         .createQueryBuilder()

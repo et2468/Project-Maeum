@@ -45,7 +45,6 @@ export class SurveyController {
         createdSurveys
       })
     } catch (e) {
-      console.log(e.message)
       throw new HttpException(e.message, e.getStatus())
     }
   }
@@ -59,7 +58,6 @@ export class SurveyController {
         survey
       })
     } catch (e) {
-      console.log(e.message)
       throw new HttpException(e.message, e.getStatus())
     }
   }
