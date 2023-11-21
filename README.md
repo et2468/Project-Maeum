@@ -33,6 +33,23 @@
 
 ## 👉 서버 구동방법
 
+데이터베이스
+
+- postgreSQL을 다운로드 받습니다.
+  - [postgreSQL 다운로드 링크](https://www.postgresql.org/download/)
+- 환경변수에 `C:\Program Files\PostgreSQL\{version}\bin`을 추가합니다.
+- cmd로 postgresql에 접속합니다.
+  - `psql -U postgres`
+- maeum 유저를 생성하고 DB를 생성할 권한을 줍니다.
+  - `CREATE USER maeum PASSWORD 'maeum' SUPERUSER;`
+  - `ALTER USER maeum CREATEDB;`
+- 오너가 maeum인 데이터베이스(maeum) 를 생성합니다.
+  - `CREATE DATABASE maeum WITH OWNER maeum ENCODING 'UTF8';`
+- maeum 유저가 maeum db에 대한 모든 권한을 부여합니다.
+  - `GRANT ALL PRIVILEGES ON DATABASE maeum TO maeum;public TO maeum;`
+
+
+
 백엔드
 
 - @nestjs/cli 글로벌 설치
