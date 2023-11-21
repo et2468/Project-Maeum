@@ -46,7 +46,7 @@
 - 오너가 maeum인 데이터베이스(maeum) 를 생성합니다.
   - `CREATE DATABASE maeum WITH OWNER maeum ENCODING 'UTF8';`
 - maeum 유저가 maeum db에 대한 모든 권한을 부여합니다.
-  - `GRANT ALL PRIVILEGES ON DATABASE maeum TO maeum;public TO maeum;`
+  - `GRANT ALL PRIVILEGES ON DATABASE maeum TO maeum;`
 
 
 
