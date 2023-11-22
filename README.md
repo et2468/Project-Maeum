@@ -72,6 +72,16 @@
 
 
 
+API 사용방법
+
+- 로그인과 회원가입 이외의 API들은 jwt검증을 거치게 됩니다.
+- 회원가입 이후 로그인시 response header에 X-ACCESS-TOKEN이 담겨있고,
+- 이를 request header X-ACCESS-TOKEN에 담아 요청을 보내주어야 합니다.
+  - token이 없다면 401 error가 뜨게 됩니다.
+  - 아래의 API 명세서를 참고하여주시면 감사하겠습니다.
+
+
+
 ## ✔️ 기타 문서
 
 ### 🎨 ERD
