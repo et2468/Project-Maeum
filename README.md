@@ -1,8 +1,8 @@
-# ✔️ Project: Maeum
+# ✔️ Project: Survey
 
-## 🎤 Maeum 소개
+## 🎤 Survey 소개
 
-마음연구소의 과제테스트를 위해 제작한 설문조사 웹 서비스입니다.
+nest.js로 제작한 설문조사 웹 서비스입니다.
 
 
 
@@ -16,7 +16,6 @@
 
 1. 로그인, 회원가입
 2. 설문지, 문항, 답변 CRUD
-
 3. 설문지 수행, 수행한 문항, 답변 조회 및 수정 
 
 
@@ -25,7 +24,6 @@
 
 - typescript
 - nest.js
-- graphql
 - typeorm
 - postgresql
 
